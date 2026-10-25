@@ -21,4 +21,9 @@ public record NewsApiKey(String value) {
             throw new IllegalArgumentException(PATTERN_MESSAGE_KEY);
         }
     }
+
+    public String maskedForLogging() {
+        if (value.length() <= 4) return "****";
+        return "****" + value.substring(value.length() - 4);
+    }
 }
